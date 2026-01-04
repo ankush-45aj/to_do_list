@@ -1,0 +1,201 @@
+/* =======================
+   APP LAYOUT
+======================= */
+
+.app-layout {
+  display: flex;
+  height: 100vh;
+  background: #0f0f0f;
+  color: white;
+  overflow: hidden;
+}
+
+/* =======================
+   SIDEBAR
+======================= */
+
+.sidebar {
+  width: 220px;
+  padding: 20px;
+  border-right: 1px solid #222;
+  background: #0f0f13;
+}
+
+/* Mobile → hide sidebar */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+/* =======================
+   TIMELINE
+======================= */
+
+.timeline {
+  flex: 1;
+  overflow: auto;
+}
+
+/* =======================
+   GRID (DESKTOP)
+======================= */
+
+.timeline-header,
+.timeline-row {
+  display: grid;
+  grid-template-columns: 60px repeat(7, minmax(140px, 1fr));
+}
+
+/* =======================
+   TIME COLUMN
+======================= */
+
+.hour {
+  padding: 8px;
+  text-align: right;
+  font-size: 11px;
+  color: #9ca3af;
+  border-right: 1px solid #222;
+}
+
+/* =======================
+   CELLS
+======================= */
+
+.cell {
+  border: 1px solid #222;
+  min-height: 90px;
+  padding: 6px;
+}
+
+/* =======================
+   TASK CARD
+======================= */
+
+.task-card {
+  border-left: 4px solid;
+  padding: 6px;
+  border-radius: 8px;
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.task-card.done {
+  opacity: 0.4;
+  text-decoration: line-through;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-actions {
+  display: none;
+  gap: 6px;
+}
+
+.task-card:hover .task-actions {
+  display: flex;
+}
+
+/* =======================
+   TABLET
+======================= */
+
+@media (max-width: 1024px) {
+  .timeline-header,
+  .timeline-row {
+    grid-template-columns: 60px repeat(7, 180px);
+  }
+}
+
+/* =======================
+   MOBILE VIEW (KEY PART)
+======================= */
+
+@media (max-width: 640px) {
+
+  /* Horizontal scroll */
+  .timeline {
+    overflow-x: auto;
+  }
+
+  .timeline-header,
+  .timeline-row {
+    grid-template-columns: 60px repeat(7, 220px);
+    width: max-content;
+  }
+
+  .cell {
+    min-height: auto;
+  }
+
+  /* Bigger tap targets */
+  .task-card {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  /* Always show actions */
+  .task-actions {
+    display: flex;
+  }
+}
+/* =======================
+   SIDEBAR (DESKTOP)
+======================= */
+
+.sidebar {
+  width: 220px;
+  padding: 20px;
+  border-right: 1px solid #222;
+  background: #0f0f13;
+  transition: width 0.25s ease;
+}
+
+/* =======================
+   TABLET → SLIM
+======================= */
+
+@media (max-width: 900px) {
+  .sidebar {
+    width: 160px;
+    padding: 16px;
+  }
+}
+
+/* =======================
+   MOBILE → ICON MODE
+======================= */
+
+@media (max-width: 640px) {
+  .sidebar {
+    width: 56px;
+    padding: 10px 6px;
+  }
+
+  /* Hide text */
+  .sidebar h2,
+  .sidebar span,
+  .sidebar .label-text {
+    display: none;
+  }
+
+  /* Center icons */
+  .sidebar button,
+  .sidebar .icon-row {
+    justify-content: center;
+  }
+
+  /* Circular add button */
+  .add-btn {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 50%;
+  }
+}
+
